@@ -1,6 +1,16 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import {
+  Container,
+  Row,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle
+} from 'reactstrap';
 
 const NasaCard = () => {
   const [nasaInfo, setnasaInfo] = useState(null);
@@ -20,9 +30,10 @@ const NasaCard = () => {
   }, []);
 
   return (
-    <div style={{ maxWidth: '800px' }}>
+    <Container style={{ maxWidth: '800px' }}>
       {nasaInfo && (
         <div>
+          <Card>
             <div
               style={{
                 display: 'flex',
@@ -32,15 +43,16 @@ const NasaCard = () => {
             >
               <img width='50%' src={nasaInfo.url} alt='Nasa' />
             </div>
-            <div>
-              <div>{nasaInfo.title}</div>
-              <div>{nasaInfo.date}</div>
-              <div>{nasaInfo.explanation}</div>
-            </div>
-          
+            <CardBody>
+              <CardTitle>{nasaInfo.title}</CardTitle>
+              <CardSubtitle>{nasaInfo.date}</CardSubtitle>
+              <CardText>{nasaInfo.explanation}</CardText>
+            </CardBody>
+          </Card>
         </div>
       )}
-    </div>
+    </Container>
   );
 };
-export default NasaCard
+
+export default NasaCard;
